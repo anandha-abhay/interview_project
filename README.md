@@ -146,3 +146,6 @@ The second commit removes `FactoryBot` and leans back on the seeds.  The seedfil
 >   \- Michael Scott
 
 :face_palm: 
+
+### Challenge #2
+This was not too bad of a challenge.  The requirements were pretty clear, making TDD easy to practice. 10/10 would work with this pretend product person again.
