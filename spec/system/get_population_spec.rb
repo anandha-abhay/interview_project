@@ -18,7 +18,7 @@ RSpec.describe "Get population by year", type: :system do
       let(:input_value) { 'haxx0r' }
 
       xit 'renders an empty 400 page' do
-        pending "Assert the page is empty I guess."
+        pending "Assert the page is empty I guess. But this is really handled in the controller spec."
       end
     end
 
