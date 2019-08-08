@@ -22,14 +22,17 @@ RSpec.describe Population, type: :model do
     let(:known_year_1) { 1990 }
     let(:known_pop_1) { 248709873 }
 
+    let(:estimated_1_step_population) { 78128809 }
+    let(:estimated_2_step_population) { 80045450 }
+
     it "accepts a year we know and return the correct population" do
       expect(Population.get(known_year_0)).to eq(known_pop_0)
       expect(Population.get(known_year_1)).to eq(known_pop_1)
     end
 
-    it "accepts a year we don't know and return the previous known population" do
-      expect(Population.get(known_year_0 + 1)).to eq(known_pop_0)
-      expect(Population.get(known_year_0 + 2)).to eq(known_pop_0)
+    it "accepts a year we don't know and returns an estimated population" do
+      expect(Population.get(known_year_0 + 1)).to eq(estimated_1_step_population)
+      expect(Population.get(known_year_0 + 2)).to eq(estimated_2_step_population)
     end
 
     it "accepts a year that is before earliest known and returns zero" do
