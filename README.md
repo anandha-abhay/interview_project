@@ -155,3 +155,6 @@ This was not too bad of a challenge. The requirements were pretty clear again, m
 
 ### Challenge #4
 The hardest part was putting together this commit
+
+### Challenge #5
+I quickly remembered that if you don't use it you lose it and obsessed with trying to re-learn calculus for awhile. Eventually I came to my senses and just looked up the proof for the exponential growth formula. It was quite upsetting to realize that I now only understand the abstract concepts of calculus and can no longer do calculus. The author of this challenge owes me credits to some online schooling.
