@@ -32,6 +32,7 @@ gem 'jquery-rails'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Install rspec for testing
@@ -39,6 +40,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
