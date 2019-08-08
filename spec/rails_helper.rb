@@ -21,7 +21,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -61,13 +61,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.before(:suite) do
-    # NOTE: Let's not load a bunch of data for no reason into our unit tests.
-    # We can make a shared context for our system tests in the future.
-    #
-    # Addendum: Upon further reflection, installing factory bot and not leaning
-    # on the seeds was over-kill/engineering.
-    # [MA]
-    # Rails.application.load_seed # loading seeds
+    Rails.application.load_seed # loading seeds
   end
 
 end
