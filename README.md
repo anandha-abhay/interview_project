@@ -129,3 +129,20 @@ Please add a radio button to the form that specifies the growth model as either
 exponential or logistic. Customers should only see the toggle if they enter a
 year greater than 1990. In deference to our biggest client, the default should
 be logistic.
+
+## Reflections
+
+### Challenge #1
+I definitely went overkill with adding in tools I was familiar with.  See https://github.com/mattabhay/interview_project/commit/4669d52755a92cc5b1df9072556f252b874c6845#r34614739
+
+Challenge one comes in 2 commits.  One where I go nuts and add in `FactoryBot` and stop leaning on the seeds because I am over optimizing way ahead of time.
+
+The second commit removes `FactoryBot` and leans back on the seeds.  The seedfile is small enough that I can live with loading it before every test suite run.  Also, there are no tests that could possibly mutate that data mid-run and it's all transactioned anyways which should be pretty quick. 
+
+> IF IT AINT BROKEN DON'T FIX IT. 
+>
+> \- Wayne Gretzky 
+>
+>   \- Michael Scott
+
+:face_palm: 
