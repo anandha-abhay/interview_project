@@ -4,11 +4,16 @@ class PopulationsController < ApplicationController
 
   def show
     @year = params[:year].match(/^\d+$/) ? params[:year].to_i : nil
-    @population = Population.get(@year)
 
     unless @year
       return head :bad_request
     end
+
+    if @year > Population::MAX_YEAR
+      return head :unprocessable_entity
+    end
+
+    @population = Population.get(@year)
 
     render :show
   end

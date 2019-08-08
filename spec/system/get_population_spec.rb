@@ -43,7 +43,7 @@ RSpec.describe "Get population by year", type: :system do
       end
 
       describe "filling out that form again" do
-        let(:input_value) { 19000 }
+        let(:input_value) { 1900 }
 
         before do
           fill_in 'year', with: input_value

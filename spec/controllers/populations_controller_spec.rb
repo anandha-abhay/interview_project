@@ -27,5 +27,10 @@ RSpec.describe PopulationsController, type: :controller do
       get :show, params: { year: "><script>alert('XSS')</script>&" }
       expect(response).to have_http_status(:bad_request)
     end
+
+    it "returns a 422 for years beyond our calculatable max" do
+      get :show, params: { year: "#{Population::MAX_YEAR + 1}" }
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
   end
 end

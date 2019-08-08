@@ -12,19 +12,22 @@ class Population < ApplicationRecord
   # table to pull this from.
   # A comment is a lie waiting to happen.
   # [MA]
-  DEFAULT_UNKNOWN_YEAR_POPULATION = 0.freeze
+  MAX_YEAR = 2500.freeze
+  GROWTH_RATE = 1.09
+  # NOTE: This constant name is getting out of control.
+  DEFAULT_UNKNOWN_PAST_YEAR_POPULATION = 0.freeze
 
   def self.get(year)
     raise ActiveRecord::RecordNotFound if Population.count == 0
 
-    year = Date.new(year.to_i)
+    year = year
 
-    return DEFAULT_UNKNOWN_YEAR_POPULATION if year < min_year
+    return DEFAULT_UNKNOWN_PAST_YEAR_POPULATION if year < min_year
 
     pop = if year > max_year
-            closest_prior_year(year)
+            estimated_future_population(year)
           else
-            Population.find_by(year: year) || estimated_population(year)
+            Population.find_by(year: year) || estimated_from_known_populations(year)
           end
 
     # NOTE: nil will return as 0
@@ -33,12 +36,37 @@ class Population < ApplicationRecord
 
   private
 
-  def self.estimated_population(year)
+  # NOTE: Hold onto your butts, math is about to happen.
+  # https://giphy.com/gifs/samuel-l-jackson-jurassic-park-hold-onto-your-butts-OCu7zWojqFA1W
+  def self.estimated_future_population(year)
+    latest_population = closest_prior_year(year)
+    time = year - latest_population.year
+
+    # TODO: Move this into a population caclculation module
+    # NOTE: This uses the exponential growth formula.
+    pop = latest_population.population.to_f * GROWTH_RATE ** time
+
+    # NOTE: This is my attempt to build a step wise recursive function to simulate
+    # population growth by year.
+    # calculate_growth = lambda do |pop, steps_left|
+    #   memo = pop * GROWTH_RATE
+    #   steps_left -= 1
+
+    #   steps_left == 0 ? memo : calculate_growth.call(memo, steps_left)
+    # end
+
+    # pop = calculate_growth.call(latest_population.population, steps)
+
+    OpenStruct.new(population: pop)
+  end
+
+  def self.estimated_from_known_populations(year)
     prior = closest_prior_year(year)
     forward = closest_forward_year(year)
 
-    population_step = (prior.population - forward.population).abs / (prior.year.year - forward.year.year).abs
-    years_stepped = year.year - prior.year.year
+    # TODO: Move this into a population caclculation module
+    population_step = (prior.population - forward.population).abs / (prior.year - forward.year).abs
+    years_stepped = year - prior.year
 
     estimate = prior.population + population_step * years_stepped
 
