@@ -149,3 +149,6 @@ The second commit removes `FactoryBot` and leans back on the seeds.  The seedfil
 
 ### Challenge #2
 This was not too bad of a challenge.  The requirements were pretty clear, making TDD easy to practice. 10/10 would work with this pretend product person again.
+
+### Challenge #3
+This was not too bad of a challenge. The requirements were pretty clear again, making TDD easy to practice... again. 11/10 would work with this pretend product person again. I did have to go back and rethink how to validate an integer input. Rails really needs an ANGRY standard library for validating all sorts of input types. In some cases I find myself wanting to spit out error codes or rendering error pages instead of just .to_iing something and getting 0.
