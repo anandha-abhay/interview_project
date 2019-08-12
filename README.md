@@ -161,3 +161,9 @@ I quickly remembered that if you don't use it you lose it and obsessed with tryi
 
 ### Challenge #6
 I started off by using the new query_logs table as a cache since it seemed like a great optimization.  I turned back quickly a fter I re-read the requirements upon completing this challenge.  This is literally a log for debugging, so lets use it as that.
+
+### Challenge #7
+The hardest part was putting together this commit
+
+### Challenge #8
+The more I  build dashboards in the main application, the more I feel the need to just send this all off to the data warehouse so we can build some proper dashboards.
