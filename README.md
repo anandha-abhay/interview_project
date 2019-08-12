@@ -158,3 +158,6 @@ The hardest part was putting together this commit
 
 ### Challenge #5
 I quickly remembered that if you don't use it you lose it and obsessed with trying to re-learn calculus for awhile. Eventually I came to my senses and just looked up the proof for the exponential growth formula. It was quite upsetting to realize that I now only understand the abstract concepts of calculus and can no longer do calculus. The author of this challenge owes me credits to some online schooling.
+
+### Challenge #6
+I started off by using the new query_logs table as a cache since it seemed like a great optimization.  I turned back quickly a fter I re-read the requirements upon completing this challenge.  This is literally a log for debugging, so lets use it as that.
