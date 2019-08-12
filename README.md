@@ -166,4 +166,4 @@ I started off by using the new query_logs table as a cache since it seemed like 
 The hardest part was putting together this commit
 
 ### Challenge #8
-The more I  build dashboards in the main application, the more I feel the need to just send this all off to the data warehouse so we can build some proper dashboards.
+The more I  build dashboards in the main application, the more I feel the need to just send this all off to the data warehouse so we can build some proper dashboards.  I also stopped writing tests because they were getting redundant and not really showing off any new skills.  I've already spent quite enough time on this homework.
