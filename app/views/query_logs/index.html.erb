@@ -1,5 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Popular Exact Queries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Year
+      </th>
+      <th>
+        Count
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @popular_queries.each do |popular_query| %>
+      <tr>
+        <td>
+          <%= popular_query.year %>
+        </td>
+        <td>
+          <%= popular_query.kount %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <h1>Query Logs</h1>
 
 <table>
