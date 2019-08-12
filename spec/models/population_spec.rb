@@ -48,10 +48,16 @@ RSpec.describe Population, type: :model do
       expect(Population.get(future_year_1)).to eq(exponential_growth_population_1)
     end
 
-    it "sends results off to get logged" do
+    it "sends exact results off to get logged" do
       allow(QueryLogger).to receive :perform_now
       Population.get(known_year_0)
-      expect(QueryLogger).to have_received(:perform_now).with(known_year_0, known_pop_0)
+      expect(QueryLogger).to have_received(:perform_now).with(known_year_0, known_pop_0, false)
+    end
+
+    it "sends calculated results off to get logged" do
+      allow(QueryLogger).to receive :perform_now
+      Population.get(future_year_0)
+      expect(QueryLogger).to have_received(:perform_now).with(future_year_0, exponential_growth_population_0, true)
     end
   end
 end

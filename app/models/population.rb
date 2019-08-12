@@ -32,9 +32,11 @@ class Population < ApplicationRecord
 
     result = pop&.population.to_i
 
+    calculated = !pop.is_a?(Population)
+
     # NOTE: This spawns a background job so we don't hold up consumers of this
     # interface.
-    QueryLogger.perform_now(year, result)
+    QueryLogger.perform_now(year, result, calculated)
 
     result
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_070955) do
+ActiveRecord::Schema.define(version: 2019_08_12_081136) do
 
   create_table "populations", force: :cascade do |t|
     t.integer "year"
@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 2019_08_12_070955) do
 
   create_table "query_logs", force: :cascade do |t|
     t.integer "year", null: false
-    t.bigint "population", null: false
+    t.integer "population", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "query_type"
     t.index ["year"], name: "index_query_logs_on_year"
   end
 

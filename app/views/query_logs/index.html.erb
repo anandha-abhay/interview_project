@@ -12,6 +12,9 @@
         Population
       </th>
       <th>
+        Query Type
+      </th>
+      <th>
         Query Executed At
       </th>
     </tr>
@@ -25,6 +28,9 @@
         </td>
         <td>
           <%= query_log.population %>
+        </td>
+        <td>
+          <%= query_log.query_type %>
         </td>
         <td>
           <%= query_log.created_at.strftime "%d/%m/%Y" %>
