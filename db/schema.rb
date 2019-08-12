@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_092708) do
+ActiveRecord::Schema.define(version: 2019_08_12_070955) do
 
   create_table "populations", force: :cascade do |t|
     t.integer "year"
     t.integer "population"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["year"], name: "index_populations_on_year", unique: true
+  end
+
+  create_table "query_logs", force: :cascade do |t|
+    t.integer "year", null: false
+    t.bigint "population", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["year"], name: "index_query_logs_on_year"
   end
 
 end

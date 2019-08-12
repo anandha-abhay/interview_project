@@ -30,8 +30,13 @@ class Population < ApplicationRecord
             Population.find_by(year: year) || estimated_from_known_populations(year)
           end
 
-    # NOTE: nil will return as 0
-    pop&.population.to_i
+    result = pop&.population.to_i
+
+    # NOTE: This spawns a background job so we don't hold up consumers of this
+    # interface.
+    QueryLogger.perform_now(year, result)
+
+    result
   end
 
   private
